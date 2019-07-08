@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app_background"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        app:cardCornerRadius="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/searchLocation"
+                android:layout_margin="5dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_search_tiny"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/colorPrimaryDark"
+                android:padding="12dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Cari lokasi anda saat ini" />
+
+            <ImageView
+                android:id="@+id/myLocationButton"
+                android:layout_marginEnd="12dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:tint="@color/colorPrimaryDark"
+                android:src="@drawable/ic_my_location" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:orientation="horizontal"
+        android:layout_height="50dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:drawableStart="@drawable/ic_place"
+                android:drawableTint="@color/colorAccent"
+                android:drawablePadding="12dp"
+                android:id="@+id/locationSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#fff"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Jalan Magelang, Tegalmas, Prawatan, Kabupaten Klaten" />
+        </ScrollView>
+    </LinearLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="100dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <androidx.cardview.widget.CardView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:cardElevation="3dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:cardCornerRadius="32dp"
+            app:cardBackgroundColor="#AED2ED"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/cardView">
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_margin="12dp"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginStart="18dp"
+                    android:text="Dhuhur" />
+
+                <View android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1" />
+
+                <TextView
+                    style="@style/TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginEnd="18dp"
+                    android:text="04:30" />
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            style="@style/TextView"
+            android:id="@+id/subuhText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:text="@string/subuh"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="45dp"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <TextView
+            style="@style/TextView"
+            android:id="@+id/dhuhurText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dhuhur"
+            app:layout_constraintStart_toStartOf="@id/subuhText"
+            android:layout_marginTop="18dp"
+            app:layout_constraintTop_toBottomOf="@+id/subuhText" />
+
+        <TextView
+            style="@style/TextView"
+            android:id="@+id/asharText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ashar"
+            app:layout_constraintStart_toStartOf="@id/subuhText"
+            android:layout_marginTop="18dp"
+            app:layout_constraintTop_toBottomOf="@+id/dhuhurText" />
+
+        <TextView
+            style="@style/TextView"
+            android:id="@+id/maghribText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+
+            android:text="Maghrib"
+            app:layout_constraintStart_toStartOf="@id/subuhText"
+            app:layout_constraintTop_toBottomOf="@+id/asharText" />
+
+        <TextView
+            style="@style/TextView"
+            android:id="@+id/IsyaText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+
+            android:text="Isya"
+            app:layout_constraintStart_toStartOf="@id/subuhText"
+            android:layout_marginBottom="100dp"
+            app:layout_constraintTop_toBottomOf="@id/maghribText"
+        />
+
+        <TextView
+            style="@style/TextView"
+            android:id="@+id/fajrTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="04:30"
+            android:layout_marginEnd="31dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/subuhText"
+            app:layout_constraintBottom_toBottomOf="@+id/subuhText" />
+
+        <TextView
+            style="@style/TextView"
+            android:id="@+id/dhuhurTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11:30"
+            android:layout_marginEnd="31dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/dhuhurText"
+            app:layout_constraintBottom_toBottomOf="@+id/dhuhurText" />
+
+        <TextView
+            style="@style/TextView"
+            android:id="@+id/asharTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15:30"
+            android:layout_marginEnd="31dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/asharText"
+            app:layout_constraintBottom_toBottomOf="@+id/asharText" />
+
+        <TextView
+            style="@style/TextView"
+            android:id="@+id/maghribTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17:30"
+            android:layout_marginEnd="31dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/maghribText"
+            app:layout_constraintBottom_toBottomOf="@+id/maghribText" />
+
+
+        <TextView
+            style="@style/TextView"
+            android:id="@+id/isyaTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18:30"
+            android:layout_marginEnd="31dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/IsyaText"
+            app:layout_constraintBottom_toBottomOf="@+id/IsyaText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

@@ -7,6 +7,7 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+/.idea/misc.xml
 .DS_Store
 /build
 /captures
@@ -14,3 +15,7 @@
 debug.keystore
 jadwalsholat.jks
 /.values/google_maps_api.xml
+/.app/src/release/res/values/google_maps_api.xml
+/.app/src/debug/res/values/google_maps_api.xml
+
+

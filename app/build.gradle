@@ -18,12 +18,12 @@ android {
     signingConfigs {
         release {
             storeFile file("jadwalsholat.jks")
+        
         }
-
         debug {
             storeFile file('debug.keystore')
+
         }
-        
     }
 
     buildTypes {

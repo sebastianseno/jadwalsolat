@@ -1,9 +1,10 @@
-package com.dodolife.jadwalsholat
+package com.dodolife.jadwalsholat.ui
 
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dodolife.jadwalsholat.R
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete

@@ -1,7 +1,8 @@
-package com.dodolife.jadwalsholat
+package com.dodolife.jadwalsholat.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dodolife.jadwalsholat.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap

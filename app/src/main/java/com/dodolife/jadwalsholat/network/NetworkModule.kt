@@ -1,6 +1,7 @@
 package com.dodolife.jadwalsholat.network
 
 import com.dodolife.jadwalsholat.BuildConfig
+import com.dodolife.jadwalsholat.network.service.PrayerTimesService
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -55,5 +56,11 @@ class NetworkModule {
             .build()
 
         return okHttpBuilder
+    }
+
+    @Provides
+    @Singleton
+    fun providePrayerTimesServices(retrofit: Retrofit): PrayerTimesService {
+        return retrofit.create(PrayerTimesService::class.java)
     }
 }

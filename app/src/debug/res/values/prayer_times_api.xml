@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="prayer_times_api" translatable="false" templateMergeStrategy="preserve">http://api.aladhan.com/v1/calendar</string>
+</resources>

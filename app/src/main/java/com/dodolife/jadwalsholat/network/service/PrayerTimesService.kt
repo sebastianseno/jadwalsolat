@@ -14,5 +14,4 @@ interface PrayerTimesService {
         @Query("longitude") longitude : Long,
         @Query("method") method : Int = 2
     ): Deferred<Response<List<PrayerTimesData>>>
-
 }

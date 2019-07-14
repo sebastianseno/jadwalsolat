@@ -1,4 +1,4 @@
-package com.dodolife.jadwalsholat.ui
+package com.dodolife.jadwalsholat.ui.main
 
 import android.app.Activity
 import android.content.Intent
@@ -32,7 +32,9 @@ class MainActivity : AppCompatActivity() {
             listOf(Place.Field.ADDRESS, Place.Field.LAT_LNG)
         ).setCountry("ID")
             .build(this)
-        startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
+        startActivityForResult(intent,
+            AUTOCOMPLETE_REQUEST_CODE
+        )
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

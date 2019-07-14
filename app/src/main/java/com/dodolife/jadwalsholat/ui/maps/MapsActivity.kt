@@ -1,4 +1,4 @@
-package com.dodolife.jadwalsholat.ui
+package com.dodolife.jadwalsholat.ui.maps
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

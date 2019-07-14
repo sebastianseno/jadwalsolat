@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_app_background"
     android:orientation="vertical"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.main.MainActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_marginTop="18dp"

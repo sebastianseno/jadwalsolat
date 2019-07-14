@@ -10,6 +10,7 @@ import okhttp3.CipherSuite
 import okhttp3.ConnectionSpec
 import okhttp3.OkHttpClient
 import okhttp3.TlsVersion
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
@@ -20,11 +21,17 @@ class NetworkModule {
 
     @Provides
     @Singleton
+    fun providesResponseInterceptor(): ResponseInterceptor {
+        return ResponseInterceptor()
+    }
+
+        @Provides
+    @Singleton
     fun retrofitBuilder(
         moshi: Moshi,
-        okHttpClient: OkHttpClient
-
-    ): Retrofit {
+        okHttpClient: OkHttpClient,
+        responseInterceptor: ResponseInterceptor
+        ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.API_BASE_URL)
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
@@ -32,7 +39,9 @@ class NetworkModule {
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(okHttpClient)
-            .build()
+            .build().also { response ->
+                responseInterceptor.retrofit = response
+            }
     }
 
     @Provides
@@ -45,17 +54,22 @@ class NetworkModule {
     @Provides
     @Singleton
     fun okHttpClient(): OkHttpClient {
-        val spec = ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
-            .tlsVersions(TlsVersion.TLS_1_2)
-            .cipherSuites(
-                CipherSuite.TLS_DHE_DSS_WITH_AES_128_CBC_SHA256,
-                CipherSuite.TLS_DHE_DSS_WITH_AES_128_CBC_SHA
-            ).build()
+//        val spec = ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+//            .tlsVersions(TlsVersion.TLS_1_2)
+//            .cipherSuites(
+//                CipherSuite.TLS_DHE_DSS_WITH_AES_128_CBC_SHA256,
+//                CipherSuite.TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+//            ).build()
         val okHttpBuilder = OkHttpClient.Builder()
-            .connectionSpecs(listOf(spec))
-            .build()
+//            .connectionSpecs(listOf(spec))
+        if (BuildConfig.DEBUG) {
+            okHttpBuilder.addInterceptor(
+                HttpLoggingInterceptor()
+                    .setLevel(HttpLoggingInterceptor.Level.BODY)
+            )
+        }
 
-        return okHttpBuilder
+        return okHttpBuilder.build()
     }
 
     @Provides

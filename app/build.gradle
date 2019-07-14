@@ -32,7 +32,8 @@ android {
             debuggable true
             minifyEnabled false
             signingConfig signingConfigs.debug
-            buildConfigField "String", "API_BASE_URL", "\"http://api.aladhan.com/\""
+            buildConfigField "String", "API_BASE_URL", "\"https://api.aladhan.com/\""
+            resValue("string", "PORT_NUMBER", "8081")
 
         }
 
@@ -41,9 +42,14 @@ android {
             minifyEnabled true
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_BASE_URL", "\"http://api.aladhan.com/\""
+            buildConfigField "String", "API_BASE_URL", "\"httpsy://api.aladhan.com/\""
 
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -69,6 +75,9 @@ dependencies {
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
     implementation("com.squareup.moshi:moshi-kotlin:1.8.0")
 
+    implementation "android.arch.lifecycle:extensions:$versions.arch"
+    implementation "android.arch.lifecycle:viewmodel:$versions.arch"
+
     implementation "androidx.room:room-runtime:$versions.room"
     implementation "androidx.room:room-ktx:$versions.room"
     kapt "androidx.room:room-compiler:$versions.room"
@@ -81,4 +90,5 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     kapt "com.google.dagger:dagger-android-processor:$versions.dagger"
 
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 }

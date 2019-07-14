@@ -10,8 +10,8 @@ interface PrayerTimesService {
 
     @GET("v1/calendar")
     fun getPrayerTimes(
-        @Query("latitude") latitude : Long,
-        @Query("longitude") longitude : Long,
+        @Query("latitude") latitude : Double,
+        @Query("longitude") longitude : Double,
         @Query("method") method : Int = 2
     ): Deferred<Response<List<PrayerTimesData>>>
 }

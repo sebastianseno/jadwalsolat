@@ -3,7 +3,7 @@ package com.dodolife.jadwalsholat.network.entity
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
-@JsonClass(generateAdapter = true)
+@JsonClass(generateAdapter = false)
 class Response<out S>(
     @Json(name = "code") val code : Int,
     @Json(name = "status") val status : String,

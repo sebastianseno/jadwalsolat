@@ -1,6 +1,7 @@
 package com.dodolife.jadwalsholat.inject
 
 import com.dodolife.jadwalsholat.JadwalApp
+import com.dodolife.jadwalsholat.database.DatabaseModule
 import com.dodolife.jadwalsholat.network.NetworkModule
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -12,7 +13,8 @@ import javax.inject.Singleton
     modules = [
         ViewModelModule::class,
         AndroidSupportInjectionModule::class,
-        NetworkModule::class
+        NetworkModule::class,
+        DatabaseModule::class
 
     ]
 )

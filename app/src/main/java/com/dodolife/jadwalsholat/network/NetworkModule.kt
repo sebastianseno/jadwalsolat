@@ -4,6 +4,7 @@ import com.dodolife.jadwalsholat.BuildConfig
 import com.dodolife.jadwalsholat.network.service.PrayerTimesService
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.CipherSuite
@@ -34,10 +35,10 @@ class NetworkModule {
         ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.API_BASE_URL)
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(ResponseJsonChecker)
-            .addConverterFactory(ScalarsConverterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addConverterFactory(ScalarsConverterFactory.create())
             .client(okHttpClient)
             .build().also { response ->
                 responseInterceptor.retrofit = response
@@ -53,7 +54,9 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun okHttpClient(): OkHttpClient {
+    fun okHttpClient(
+        responseInterceptor: ResponseInterceptor
+    ): OkHttpClient {
 //        val spec = ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
 //            .tlsVersions(TlsVersion.TLS_1_2)
 //            .cipherSuites(
@@ -61,6 +64,7 @@ class NetworkModule {
 //                CipherSuite.TLS_DHE_DSS_WITH_AES_128_CBC_SHA
 //            ).build()
         val okHttpBuilder = OkHttpClient.Builder()
+            .addInterceptor(responseInterceptor)
 //            .connectionSpecs(listOf(spec))
         if (BuildConfig.DEBUG) {
             okHttpBuilder.addInterceptor(

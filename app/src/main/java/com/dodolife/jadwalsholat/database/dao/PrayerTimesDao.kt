@@ -6,8 +6,7 @@ import androidx.room.Query
 import com.dodolife.jadwalsholat.database.entity.PrayerTimesDb
 
 @Dao
-abstract class PrayerTimesDao : BaseDao<PrayerTimesDb> {
-
+interface PrayerTimesDao : BaseDao<PrayerTimesDb> {
     @Query("SELECT * FROM PrayerTimesDb")
-    abstract fun getPrayerTimes(): LiveData<List<PrayerTimesDb>>
+    fun getPrayerTimes(): LiveData<List<PrayerTimesDb>>
 }

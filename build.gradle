@@ -7,7 +7,8 @@ buildscript {
             okhttp  : '3.14.1',
             dagger  : '2.22.1',
             room    : '2.1.0',
-            arch    : '1.1.1'
+            arch    : '1.1.1',
+            moshi   : '1.8.0'
     ]
 
     repositories {

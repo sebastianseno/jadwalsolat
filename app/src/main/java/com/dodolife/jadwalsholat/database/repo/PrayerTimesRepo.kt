@@ -6,7 +6,6 @@ import com.dodolife.jadwalsholat.database.toDb
 import com.dodolife.jadwalsholat.network.service.PrayerTimesService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.text.DecimalFormat
 import javax.inject.Inject
 import javax.inject.Singleton
 

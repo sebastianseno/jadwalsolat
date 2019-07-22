@@ -5,7 +5,7 @@ import androidx.room.*
 interface BaseDao<in X> {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(obj: X)
+    fun insertx(obj: X)
 
     @JvmSuppressWildcards
     @Insert(onConflict = OnConflictStrategy.REPLACE)

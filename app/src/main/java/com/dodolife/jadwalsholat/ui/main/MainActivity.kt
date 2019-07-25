@@ -2,16 +2,19 @@ package com.dodolife.jadwalsholat.ui.main
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.dodolife.jadwalsholat.R
+import com.dodolife.jadwalsholat.inject.BaseActivity
+import com.dodolife.jadwalsholat.utils.getViewModel
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+
+    private val viewModel by getViewModel<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +35,8 @@ class MainActivity : AppCompatActivity() {
             listOf(Place.Field.ADDRESS, Place.Field.LAT_LNG)
         ).setCountry("ID")
             .build(this)
-        startActivityForResult(intent,
+        startActivityForResult(
+            intent,
             AUTOCOMPLETE_REQUEST_CODE
         )
     }
@@ -44,6 +48,8 @@ class MainActivity : AppCompatActivity() {
                 val place = Autocomplete.getPlaceFromIntent(data!!)
                 val latLng = place.latLng
                 locationSelect.text = place.address
+                viewModel.getPrayerTimes(latLng!!.latitude, latLng.longitude)
+//                viewModel.getPrayerTimesByAddress(place.address!!)
             }
         }
     }

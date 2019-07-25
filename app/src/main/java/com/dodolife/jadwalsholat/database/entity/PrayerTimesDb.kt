@@ -5,15 +5,14 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class PrayerTimesDb(
-    @PrimaryKey
-    val subuh   : String,
-    val sunrise : String,
-    val dhuhur  : String,
-    val ashar   : String,
-    val maghrib : String,
-    val isya    : String
+
+    val subuh   : String?,
+    val sunrise : String?,
+    val dhuhur  : String?,
+    val ashar   : String?,
+    val maghrib : String?,
+    val isya    : String?
 ) {
-    override fun toString(): String {
-        return super.toString()
-    }
+    @PrimaryKey(autoGenerate = false)
+    var id: Int = 0
 }

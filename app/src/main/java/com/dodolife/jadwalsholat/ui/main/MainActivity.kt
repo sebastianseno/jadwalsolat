@@ -3,9 +3,12 @@ package com.dodolife.jadwalsholat.ui.main
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import com.dodolife.jadwalsholat.R
+import com.dodolife.jadwalsholat.database.entity.PrayerTimesDb
 import com.dodolife.jadwalsholat.inject.BaseActivity
 import com.dodolife.jadwalsholat.utils.getViewModel
+import com.dodolife.jadwalsholat.utils.observe
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
@@ -27,6 +30,8 @@ class MainActivity : BaseActivity() {
         searchLocation.setOnClickListener {
             openAutoComplete()
         }
+
+        observe(viewModel.allPrayerTimes, ::displayData)
     }
 
     private fun openAutoComplete() {
@@ -49,9 +54,18 @@ class MainActivity : BaseActivity() {
                 val latLng = place.latLng
                 locationSelect.text = place.address
                 viewModel.getPrayerTimes(latLng!!.latitude, latLng.longitude)
-//                viewModel.getPrayerTimesByAddress(place.address!!)
+            } else {
+                Toast.makeText(this, "something went wrong", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun displayData(prayerTimesDb: PrayerTimesDb?) {
+        fajrTime.text = prayerTimesDb?.subuh
+        dhuhurTime.text = prayerTimesDb?.dhuhur
+        asharTime.text = prayerTimesDb?.ashar
+        maghribTime.text = prayerTimesDb?.maghrib
+        isyaTime.text = prayerTimesDb?.isya
     }
 
     companion object {

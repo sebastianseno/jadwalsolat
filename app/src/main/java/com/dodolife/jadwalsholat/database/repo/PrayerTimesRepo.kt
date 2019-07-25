@@ -1,7 +1,10 @@
 package com.dodolife.jadwalsholat.database.repo
 
+import androidx.lifecycle.LiveData
 import com.dodolife.jadwalsholat.database.JadwalDb
 import com.dodolife.jadwalsholat.database.dao.PrayerTimesDao
+import com.dodolife.jadwalsholat.database.entity.PrayerTimesDb
+import com.dodolife.jadwalsholat.database.entity.PrayerTimesSummary
 import com.dodolife.jadwalsholat.database.toDb
 import com.dodolife.jadwalsholat.database.toDbPrayer
 import com.dodolife.jadwalsholat.network.service.PrayerTimesService
@@ -17,6 +20,10 @@ class PrayerTimesRepo @Inject constructor(
 ) {
 
     private val prayerTimesDao: PrayerTimesDao = jadwalDb.PrayerTimesDao()
+
+    fun getAllPrayerTimesFromQuerry(): LiveData<PrayerTimesDb> {
+        return prayerTimesDao.getPrayerTimes()
+    }
 
     suspend fun getPrayerTimes(
         latitude: Double,

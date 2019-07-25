@@ -16,3 +16,16 @@ data class PrayerTimesDb(
     @PrimaryKey(autoGenerate = false)
     var id: Int = 0
 }
+
+data class PrayerTimesSummary(
+    val subuh   : String?,
+    val sunrise : String?,
+    val dhuhur  : String?,
+    val ashar   : String?,
+    val maghrib : String?,
+    val isya    : String?
+) {
+    override fun toString(): String {
+        return super.toString()
+    }
+}

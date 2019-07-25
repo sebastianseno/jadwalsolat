@@ -9,5 +9,5 @@ import com.dodolife.jadwalsholat.database.entity.PrayerTimesDb
 interface PrayerTimesDao : BaseDao<PrayerTimesDb> {
 
     @Query("SELECT * FROM PrayerTimesDb")
-    fun getPrayerTimes(): LiveData<List<PrayerTimesDb>>
+    fun getPrayerTimes(): LiveData<PrayerTimesDb>
 }

@@ -48,7 +48,8 @@ class MainActivity : BaseActivity() {
                 val place = Autocomplete.getPlaceFromIntent(data!!)
                 val latLng = place.latLng
                 locationSelect.text = place.address
-                viewModel.getPrayerTimes(latLng!!.latitude, latLng!!.longitude)
+                viewModel.getPrayerTimes(latLng!!.latitude, latLng.longitude)
+//                viewModel.getPrayerTimesByAddress(place.address!!)
             }
         }
     }

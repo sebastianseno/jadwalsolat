@@ -6,13 +6,12 @@ import androidx.room.PrimaryKey
 @Entity
 data class PrayerTimesDb(
 
-    val subuh   : String,
-    val sunrise : String,
-    val dhuhur  : String,
-    val ashar   : String,
-    val maghrib : String,
-    val isya    : String,
-    val name : String
+    val subuh   : String?,
+    val sunrise : String?,
+    val dhuhur  : String?,
+    val ashar   : String?,
+    val maghrib : String?,
+    val isya    : String?
 ) {
     @PrimaryKey(autoGenerate = false)
     var id: Int = 0

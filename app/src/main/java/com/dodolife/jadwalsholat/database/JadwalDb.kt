@@ -9,7 +9,7 @@ import com.dodolife.jadwalsholat.database.entity.PrayerTimesDb
 @Database(
     entities = [
         PrayerTimesDb::class
-    ], version = 4
+    ], version = 1
 )
 abstract class JadwalDb : RoomDatabase() {
 

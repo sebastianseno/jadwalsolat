@@ -17,16 +17,12 @@ android {
     signingConfigs {
         release {
             storeFile file("jadwalsholat.jks")
-            storePassword 'jadwal123x'
-            keyAlias = 'jadwalkey'
-            keyPassword 'jadwal123x'
+
         }
 
         debug {
             storeFile file('debug.keystore')
-            storePassword 'jadwal123x'
-            keyAlias = 'jadwalkey'
-            keyPassword 'jadwal123x'
+
         }
     }
 

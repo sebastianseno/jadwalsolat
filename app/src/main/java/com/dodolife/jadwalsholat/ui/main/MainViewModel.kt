@@ -22,4 +22,14 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun getPrayerTimesByAddress(address: String) {
+        launch {
+            try {
+                prayerTimesRepo.getPrayerTimesByAddress(address)
+            } catch (e:Exception) {
+                Log.e("Prayer Times","Error Result",e)
+            }
+        }
+    }
+
 }
